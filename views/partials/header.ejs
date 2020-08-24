@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style.css">
+    <title>ARIB LAUNRY</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="title no-hover"><a href="/">ARIB LAUNDRY</a></li>
+            <div class="actions">
+                <li><a href="/customers/new">Add Customer</a></li>
+                <li><a href="/customers">Customers</a></li>
+                <li><a href="/staffs">Staffs</a></li>
+                <li><a href="/washes">Washes</a></li>
+            </div>
+            <div class="user-info">
+                <% if (currentStaff && currentStaff.fullname.length > 0) { %>
+                    <li><a href="/staffs/<%= currentStaff._id %>">My Account</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    <li class="no-hover"><img src="userm.png" class="profile"><a href="/staffs/<%= currentStaff._id %>"><%= currentStaff.fullname %></a></li>
+                <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Sign Up</a></li>
+                <% } %>
+            </div>
+        </ul>
+    </nav>
+
+    <div class="content">

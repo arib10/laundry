@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="/forms.css">
+<h2>Add a New Wash record for Customer <%= customer.fullname %></h2>
+<p><big>Wash Details</big></p>
+<form action="/customers/<%= customer._id %>/washes/" method="post">
+<input type="checkbox" name="wash-types" id="" value="Wash and Fold"> Wash and Fold <br>
+<input type="checkbox" name="wash-types" id="" value="Hand Wash">hand Wash<br>
+<input type="checkbox" name="wash-types" id="" value="Dry Clean">Dry Clean<br>
+<input type="checkbox" name="wash-types" id="" value="Carpets">Carpets<br>
+<textarea name="description" id="" cols="30" rows="10" placeholder="Wash Description"></textarea><br>
+<button>Add Wash Record</button>
+</form>
+<%- include('../partials/footer.ejs') %>

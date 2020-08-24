@@ -1,0 +1,12 @@
+<%- include('../partials/header.ejs') %>
+    <div>
+        <h2><%= staff.fullname %> Profile</h2>
+        <p>Phone: <%= staff.phone %></p>
+        <p>Address: <%= staff.address %></p>
+        <p>Email: <%= staff.username %></p>
+        <p>Date Staff Registered: <%= staff.date_staff_resumed.toDateString() %></p>
+        <p><a href="/customers/new">Add a new customer</a></p>
+        <p><a href="/customers">See All Customers</a></p>
+        <a href="/logout">Logout</a>
+    </div>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,27 @@
+
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="forms.css">
+<div class="form">
+    <h2>Staff Sign Up</h2>
+    <form action="/login" method="POST">
+        <label for="">
+            <input type="text" name="fullname" placeholder="Staff Name">
+        </label>
+        <label for="">
+            <input type="email" name="username" placeholder="Staff E-mail">
+        </label>
+        <label for="">
+            <input type="tel" name="phone" placeholder="Phone Number">
+        </label>
+        <label for="">
+            <textarea name="address" id="" cols="30" rows="10" placeholder="Staff Address"></textarea>
+        </label>
+        <label for="">
+            <input type="password" name="password" placeholder="Choose a Password">
+        </label>
+        <label for="">
+            <input type="submit" value="SIGN UP">
+        </label>
+    </form>
+</div>
+<%- include('../partials/footer.ejs') %>

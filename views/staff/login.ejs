@@ -1,0 +1,17 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="forms.css">
+<div class="form">
+    <h2>Staff Login</h2>
+    <form action="/login" method="POST">
+        <label for="">
+            <input type="text" name="username" placeholder="username">
+        </label>
+        <label for="">
+            <input type="password" name="password" placeholder="password">
+        </label>
+        <label for="">
+            <input type="submit" value="LOGIN">
+        </label>
+    </form>
+</div>
+<%- include('../partials/footer.ejs') %>

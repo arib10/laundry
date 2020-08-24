@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="/forms.css">
+<div class="form">
+    <h2>Add New Customer</h2>
+    <form action="/customers" method="post">
+        <label for="">
+            <input type="text" name="customer[fullname]" placeholder="Customer Name" required>
+        </label>
+        <label for="">
+            <input type="email" name="customer[email]" placeholder="Customer E-mail" required>
+        </label>
+        <label for="">
+            <input type="tel" name="customer[phone]" placeholder="Phone Number" required>
+        </label>
+        <label for="">
+            <textarea name="customer[address]" id="" cols="30" rows="10" placeholder="Customer Address" required></textarea>
+        </label>
+        <label for="">
+            <input type="submit" value="ADD CUSTOMER">
+        </label>
+    </form>
+</div>
+<%- include('../partials/footer.ejs') %>

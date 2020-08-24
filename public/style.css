@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body {
+    background-image: linear-gradient(to bottom, #4ad 50%, #fff 50%);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+nav {
+    background-color: #fff;
+    position: fixed;
+    height: 100%;
+    min-width: 20%;
+    overflow-y: auto;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,.3);
+}
+ul {
+    list-style-type: none;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+}
+li {
+    padding: 5px;
+}
+ul li.title a {
+    font-size: 30px;
+    padding: 20px;
+    color: #4ad;
+}
+ul li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #222;
+    /* font-size: 20px; */
+}
+ul div.user-info, ul div.actions {
+    margin-top: 15%;
+}
+
+ul li:not(.no-hover)  a:hover {
+    color: #f44336;
+    background-color: #fff;
+}
+div.content {
+    margin-left: 25%;
+    padding: 20px;
+}
+div.form {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 45%;
+    box-shadow: 0px 5px 2px 0px rgba(0,0,0,.3);
+    margin: 10vh auto;
+}
+div.form, form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+div.form h2 {
+    text-align: center;
+    padding: 20px 0px;
+    font-weight: lighter;
+}
+div.form form label {
+    width: 80%;
+    margin: 20px auto;
+}
+div.form form label input, div.form form label textarea {
+    width: 100%;
+    display: block;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #222;
+    outline: none;
+    font-size: 18px;
+}
+div.form form label textarea {
+    resize: none;
+}
+div.form form label input[type=submit] {
+    background-color: #4ad;
+    cursor: pointer;
+    border-bottom: none;
+}
+footer {
+    background-color: #4ad;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer p {
+    text-align: center;
+    font-size: 20px;
+}
+img.profile {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+img.profile + a {
+    line-height: 1.5;
+    margin: 0;
+}
+li.no-hover {
+    display: flex;
+}

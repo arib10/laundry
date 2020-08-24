@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs') %>
+<h1>Welcome! You will soon see all washes here!</h1>
+
+<% washes.forEach( wash => { %>
+    <p>Wash was made by: <%= wash.customer.name %></p>
+    <p>Wash was registered by staff <%= wash.staff %></p>
+    <p>Payment Status is <%- wash.payment.status.bold() %></p>
+    <p>Wash was registered on <%= wash.date_of_wash.toDateString() %></p>
+    <hr>
+<% }) %>
+<%- include('../partials/footer.ejs') %>
