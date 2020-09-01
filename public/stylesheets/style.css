@@ -257,7 +257,7 @@ div.alert.error {
     }
     div.alert {
         width: 90%;
-        margin-left: 5%;
+        left: 5%;
     }
     div.customer {
         width: 95%;
