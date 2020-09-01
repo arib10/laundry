@@ -9,7 +9,8 @@ const express                 = require("express"),
       flash                   = require("connect-flash"),
       passportLocalMongoose   = require("passport-local-mongoose");
 
-mongoose.connect("mongodb://localhost:27017/laundry_app");
+mongoose.connect(process.env.DATABASEURL);
+// mongodb://localhost:27017/laundry_app
 
 
 //Passport SET-UP
