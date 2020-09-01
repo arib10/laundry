@@ -68,7 +68,7 @@ router.post("/customers/:id/washes", isLoggedIn, (req, res) => {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(resp);
+                            req.flash("success", "New wash record has been added for " + customer.fullname + "!");
                             res.redirect("/customers/" + customer._id);
                         }
                     });

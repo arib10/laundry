@@ -4,6 +4,15 @@ const nav = document.querySelector("nav");
 const content = document.querySelector("div.content");
 const printBtn = document.querySelector(".print-btn");
 
+window.onclick = e => {
+    if (!e.target.matches("nav") && !e.target.matches("#navopen")) {
+        nav.style.width = "0px";
+        content.style.marginLeft = "20px"
+    }
+    if (!e.target.matches(".alert")) {
+        document.querySelector(".alert").style.display = "none";
+    }
+}
 
 navClose.onclick = () => {
     nav.style.width = "0px";

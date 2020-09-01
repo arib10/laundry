@@ -57,7 +57,7 @@ app.use(staffsRoute);
 app.use(customersRoute);
 app.use(washesRoute);
 app.use(paymentsRoute);
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 2000
 app.listen(port, () => {
     console.log("Your laundry server is running....");
 });

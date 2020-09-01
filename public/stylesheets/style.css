@@ -217,6 +217,7 @@ div.alert {
     text-align: center;
     position: absolute;
     animation: drop 0.52s ease-in-out;
+    z-index: 1;
 }
 div.alert h2, div.alert h3, div.alert p {
     padding: 15px;
@@ -226,6 +227,9 @@ div.alert h3 {
     color: #f44336;
     background-color: #fff;
     font-weight: 400;
+}
+div.alert.success h3 {
+    color: #155724;
 }
 @keyframes drop {
     0% {

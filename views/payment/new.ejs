@@ -6,18 +6,23 @@
     <h2>Add Payment</h2>
     <form action="/customers/<%= customer._id %>/washes/<%= washId %>/payment" method="post">
         <label for="">
+            WASH ID
             <input type="text" name="wash-id" value="<%= washId %>" readonly>
         </label>
         <label for="">
+            CUSTOMER NAME
             <input type="text" name="customer" value="<%= customer.fullname %>" readonly>
         </label>
         <label for="">
+            STAFF NAME
             <input type="text" name="staff" value="<%= staff %>" readonly>
         </label>
         <label for="">
-            <input type="number" name="amount" placeholder="Amount" min="100" step="10">
+            AMOUNT
+            <input type="number" name="amount" min="100" step="10">
         </label>
         <label for="">
+            PAYMENT METHOD
             <select name="method" id="">
                 <option value="Cash">Cash</option>
                 <option value="Bank Transfer">Bank Transfer</option>
