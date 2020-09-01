@@ -253,10 +253,13 @@ div.alert.error {
 }
 @media screen and (max-width: 700px) {
     div.form {
-        width: 80%;
+        width: 90%;
+    }
+    div.alert {
+        width: 90%;
     }
     div.customer {
-        width: 90%;
+        width: 95%;
         margin: 10px auto;
     }
     div.customer-container {

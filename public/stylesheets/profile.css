@@ -79,14 +79,14 @@ div.container {
     flex-direction: column;
 }
 div.user-profile, div.washes-info {
-    width: 90%;
+    width: 95%;
     margin: 20px auto;
 }
 div.wash {
-    width: 80%;
+    width: 95%;
 }
 div.wash-info {
-    width: 90%;
+    width: 95%;
     margin: auto;
 }
 }
