@@ -1,6 +1,5 @@
 const express    = require("express"),
       Customer   = require("../models/customer"),
-      Wash   = require("../models/washes"),
       router     = express.Router();
 
 // SHOWS ALL CUSTOMERS
@@ -8,7 +7,7 @@ router.get("/customers", isLoggedIn, (req, res) => {
     Customer.find({}, (err, customers) => {
         if (err) {
             console.log(err);
-            res.send("An Error Occurred...");
+            req.flash("error", "Customers couldn't be fetched from the database.");
         } else {
             res.render("customer/showall", {customers: customers});
         }
@@ -24,9 +23,10 @@ router.get("/customers/new", isLoggedIn, (req, res) => {
 router.post("/customers", isLoggedIn, (req, res) => {
     Customer.create(req.body.customer, (err, customer) => {
         if (err) {
-            console.log(err);
+            req.flash("error", "A new customer couldn't be added.");
             res.redirect("/");
         } else {
+            req.flash("success", "You have successfully added " + customer.fullname + " as a new customer.");
             res.redirect("/customers/" + customer._id);
         }
     });
@@ -36,7 +36,7 @@ router.post("/customers", isLoggedIn, (req, res) => {
 router.get("/customers/:id", isLoggedIn, (req, res) => {
     Customer.findById(req.params.id).populate("washes").exec( (err, customer) => {
         if (err) {
-            console.log(err);
+            req.flash("error", "Customer couldn't be loaded.");
             res.send("An Error Occured..");
         } else {
             res.render("customer/show", {customer: customer});

@@ -1,12 +1,38 @@
 <%- include('../partials/header.ejs') %>
-    <div>
-        <h2><%= staff.fullname %> Profile</h2>
-        <p>Phone: <%= staff.phone %></p>
-        <p>Address: <%= staff.address %></p>
-        <p>Email: <%= staff.username %></p>
-        <p>Date Staff Registered: <%= staff.date_staff_resumed.toDateString() %></p>
-        <p><a href="/customers/new">Add a new customer</a></p>
-        <p><a href="/customers">See All Customers</a></p>
-        <a href="/logout">Logout</a>
+<link rel="stylesheet" href="/stylesheets/profile.css">
+<div class="container">
+    <div class="user-profile">
+        <div class="profile-img">
+            <img src="../userm.png" alt="">
+            <p class="username"><%= staff.fullname %></p>
+        </div>
+        <div class="userinfo">
+            <p>Junior Staff</p>
+            <p><%= staff.address %></p>
+            <p><%= staff.username %></p>
+            <p><%= staff.phone %></p>
+            <p>Resumed on <%= staff.date_staff_resumed.toDateString() %></p>
+            <hr>
+            <h2>Summary</h2>
+            <p>No. of Washes recorded: <strong><%= washes.length %></strong></p>
+            <p>No. of Payments recorded: <strong><%= payments.length %></strong></p>
+        </div>
     </div>
+
+    <div class="washes-info">
+        <h2>All Washes Recorded By You</h2>
+        <div class="washes">
+            <% washes.forEach( wash => { %>
+                <div class="wash">
+                    <a href="/washes/<%= wash._id %>">
+                        <p>Wash ID: <%= wash._id %>.</p>
+                        <p>Date Recorded: <%= wash.date_of_wash.toDateString() %>.</p>
+                    </a>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
 <%- include('../partials/footer.ejs') %>
+

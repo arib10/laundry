@@ -1,18 +1,33 @@
-<%- include('../partials/header.ejs') %>
-<link rel="stylesheet" href="forms.css">
+<%- include('../partials/header') %>
+<link rel="stylesheet" href="/stylesheets/forms.css">
+<link rel="stylesheet" href="stylesheets/auth.css">
 
-<h2>Add Payment</h2>
-<form action="/customers/<%= customer._id %>/washes/<%= washId %>/payment" method="post">
-<input type="text" name="wash-id" value="<%= washId %>" readonly><br>
-<input type="text" name="customer" value="<%= customer.fullname %>" readonly><br>
-<input type="text" name="staff" value="<%= staff %>" readonly><br>
-<input type="number" name="amount" placeholder="Amount" min="100" step="10"><br>
-<select name="method" id="">
-    <option value="Cash">Cash</option>
-    <option value="Bank Transfer">Bank Transfer</option>
-    <option value="POS">POS</option>
-</select><br>
-<button>Add Payment</button>
-</form>
+<div class="form">
+    <h2>Add Payment</h2>
+    <form action="/customers/<%= customer._id %>/washes/<%= washId %>/payment" method="post">
+        <label for="">
+            <input type="text" name="wash-id" value="<%= washId %>" readonly>
+        </label>
+        <label for="">
+            <input type="text" name="customer" value="<%= customer.fullname %>" readonly>
+        </label>
+        <label for="">
+            <input type="text" name="staff" value="<%= staff %>" readonly>
+        </label>
+        <label for="">
+            <input type="number" name="amount" placeholder="Amount" min="100" step="10">
+        </label>
+        <label for="">
+            <select name="method" id="">
+                <option value="Cash">Cash</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="POS">POS</option>
+            </select>
+        </label>
+        <label for="">
+            <input type="submit" value="ADD PAYMENT">
+        </label>
+    </form>
+</div>
 
-<%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer') %>

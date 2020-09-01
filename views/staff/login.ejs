@@ -1,17 +1,19 @@
 <%- include('../partials/header.ejs') %>
-<link rel="stylesheet" href="forms.css">
+<link rel="stylesheet" href="/stylesheets/forms.css">
+<link rel="stylesheet" href="stylesheets/auth.css">
 <div class="form">
     <h2>Staff Login</h2>
     <form action="/login" method="POST">
         <label for="">
-            <input type="text" name="username" placeholder="username">
+            <input type="text" name="username" placeholder="username" required>
         </label>
         <label for="">
-            <input type="password" name="password" placeholder="password">
+            <input type="password" name="password" placeholder="password" required>
         </label>
         <label for="">
             <input type="submit" value="LOGIN">
         </label>
     </form>
+    <p class="sign-up">New Staff? <a href="/register">Sign Up</a></p>
 </div>
 <%- include('../partials/footer.ejs') %>

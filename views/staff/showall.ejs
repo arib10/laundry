@@ -1,13 +1,15 @@
 <%- include('../partials/header.ejs') %>
-<h1>This is the Page where we can see all Users</h1>
-<% staffs.forEach(staff => { %>
-    <div>
-        <p>Name: <%= staff.fullname %></p>
-        <p>Phone: <%= staff.phone %></p>
-        <p>Address: <%= staff.address %></p>
-        <p>Email: <%= staff.username %></p>
-        <p>Date Staff Registered: <%= staff.date_staff_resumed.toDateString() %></p>
-    </div>
-    <hr>
-<% }) %>
+<div class="customer-container">
+    <% staffs.forEach(staff => { %>
+        <div class="customer">
+            <h2><%= staff.fullname %></h2>
+            <p>Email: <%= staff.username %></p>
+            <p>Phone Number: <%= staff.phone %></p>
+            <p>Address: <%= staff.address %></p>
+            <p class="">
+                <a class="btn" href="/staffs/<%= staff._id %>">See Full profile</a>
+            </p>
+        </div>
+    <% }) %>
+</div>
 <%- include('../partials/footer.ejs') %>

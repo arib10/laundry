@@ -1,0 +1,9 @@
+nav {
+    display: none;
+}
+div.content {
+    margin-left: 0;
+}
+#navopen {
+    display: none;
+}

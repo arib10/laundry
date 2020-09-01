@@ -1,13 +1,29 @@
 <%- include('../partials/header.ejs') %>
-<link rel="stylesheet" href="/forms.css">
-<h2>Add a New Wash record for Customer <%= customer.fullname %></h2>
-<p><big>Wash Details</big></p>
-<form action="/customers/<%= customer._id %>/washes/" method="post">
-<input type="checkbox" name="wash-types" id="" value="Wash and Fold"> Wash and Fold <br>
-<input type="checkbox" name="wash-types" id="" value="Hand Wash">hand Wash<br>
-<input type="checkbox" name="wash-types" id="" value="Dry Clean">Dry Clean<br>
-<input type="checkbox" name="wash-types" id="" value="Carpets">Carpets<br>
-<textarea name="description" id="" cols="30" rows="10" placeholder="Wash Description"></textarea><br>
-<button>Add Wash Record</button>
-</form>
+<link rel="stylesheet" href="/stylesheets/forms.css">
+
+<div class="form">
+    <h2>Add New Wash for <%= customer.fullname %></h2>
+    <form action="/customers/<%= customer._id %>/washes/" method="post">
+        <label for="waf">
+            <input type="checkbox" name="wash-types" id="waf" value="Wash and Fold" placeholder="">Wash and Fold
+        </label>
+        <label for="hw">
+            <input type="checkbox" name="wash-types" id="hw" value="Hand Wash" placeholder="">Hand Wash
+        </label>
+        <label for="dc">
+            <input type="checkbox" name="wash-types" id="dc" value="Dry Clean" placeholder="">Dry Clean
+        </label>
+        <label for="carp">
+            <input type="checkbox" name="wash-types" id="carp" value="Carpets" placeholder="">Carpets
+        </label>
+        <label for="">
+            <textarea name="description" id="" cols="30" rows="10" placeholder="Wash Description"></textarea><br>
+        </label>
+        <label for="">
+            <input type="submit" value="ADD WASH RECORD">
+        </label>
+    </form>
+</div>
+
+
 <%- include('../partials/footer.ejs') %>

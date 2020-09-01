@@ -7,13 +7,24 @@ const express    = require("express"),
 
 //DISPLAYS ALL WASHES
 router.get("/washes", isLoggedIn, (req, res) => {
-    Wash.find({}).populate("customer").exec( (err, washes) => {
+    Wash.find({}).populate("payment").exec( (err, washes) => {
         if (err) {
             console.log(err);
-            res.send("An Error Occurred...")
+            req.flash("error", "Couldn't load washes.");
         } else {
-            console.log(washes);
-            res.render("washes/show", {washes: washes});
+            res.render("washes/showall", {washes: washes});
+        }
+    });
+});
+
+//DISPLAYS A PARTICULAR WASH
+router.get("/washes/:id", isLoggedIn, (req, res) => {
+    Wash.findById(req.params.id).populate("customer").exec( (err, wash) => {
+        if (err) {
+            console.log(err);
+            req.flash("error", "Wash details couldn't be loaded.");
+        } else {
+            res.render("washes/show", {wash: wash});
         }
     });
 });
@@ -23,7 +34,7 @@ router.get("/customers/:id/washes/new", isLoggedIn, (req, res) => {
     Customer.findById(req.params.id, (err, customer) => {
         if (err) {
             console.log(err);
-            res.send("An Error Occurred...");
+            res.redirect("/washes");
         } else {
             res.render("washes/new", {customer: customer});   
         }
@@ -35,7 +46,8 @@ router.post("/customers/:id/washes", isLoggedIn, (req, res) => {
     Customer.findById(req.params.id, (err, customer) => {
         if (err) {
             console.log(err);
-            res.send("An Error Occurred..");
+            req.flash("error", "The customer doesn't appear to be registered before.");
+            res.redirect("/customers");
         } else {
             const newWash = {
                 staff: req.user.fullname,
@@ -45,7 +57,7 @@ router.post("/customers/:id/washes", isLoggedIn, (req, res) => {
             Wash.create(newWash, (err, wash) => {
                 if (err) {
                     console.log(err);
-                    res.send("An Error Occurred..");
+                    req.flash("error", "New wash couldn't be created.");
                 } else {
                     console.log(wash);
                     wash.customer.id = req.params.id;
@@ -71,7 +83,7 @@ router.get("/customers/:id/washes/:wash_id/payment/new", (req, res) => {
     Customer.findById(req.params.id, (err, customer) => {
         if (err) {
             console.log(err);
-            res.send("An Error Occurred...");
+            req.flash("error", "You can't record payment for a non-existing customer.");
         } else {
             res.render("payment/new", {washId: req.params.wash_id, customer: customer, staff: req.user.fullname });
         }
@@ -82,7 +94,8 @@ router.post("/customers/:id/washes/:wash_id/payment/", (req, res) => {
     Wash.findById(req.params.wash_id, (err, wash) => {
         if (err) {
             console.log(err);
-            return res.send("An Error Occurred...");
+            req.flash("error", "You can't make payment for a non-existing wash record.");
+            return res.redirect("/washes");
         }
         const newPayment = {
             amount: req.body.amount,
@@ -96,11 +109,11 @@ router.post("/customers/:id/washes/:wash_id/payment/", (req, res) => {
         Payment.create(newPayment, (err, payment) => {
             if (err) {
                 console.log(err);
-                res.send("An Error Occurred...");
+                req.flash("error", "A new payment record couldn't be created.");
+                return res.redirect("/washes");
             } else {
                 wash.payment = payment;
                 wash.save();
-                console.log(wash);
             }
         })
         wash.payment.status = "Paid";
@@ -108,10 +121,9 @@ router.post("/customers/:id/washes/:wash_id/payment/", (req, res) => {
         wash.save((err, wash) => {
             if (err) {
                 console.log(err);
-                return res.send("An Error Occurred...");
+                req.flash("error", "An Error popped while trying to save wash.");
+                return res.redirect("/washes");
             }
-            console.log(wash);
-            console.log(wash.customer);
             res.redirect("/customers/" + wash.customer.id + "/");
         });
     });

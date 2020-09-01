@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs') %>
+<h1 class="title">All Washes</h1>
+
+<div class="customer-container">
+    <% washes.forEach( wash => { %>
+        <div class="customer">
+            <h2> Wash Recoreded for <%= wash.customer.name %></h2>
+            <p>Recoreded by staff <%= wash.staff %></p>
+            <p>Payment Status is <%= wash.payment.status %></p>
+            <p>Wash was registered on <%= wash.date_of_wash.toDateString() %></p>
+            <p class="">
+                <a class="btn" href="/washes/<%= wash._id %>">See Full Wash Details</a>
+                <a href="/payments/<%= wash.payment.id %>">See payment</a>
+            </p>
+        </div>
+    <% }) %>
+</div>
+<%- include('../partials/footer.ejs') %>
